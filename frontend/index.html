@@ -30,6 +30,28 @@
         </form>
     </div>
 
+    <script>
+        class Event {
+            constructor(type, payload){
+                this.type = type;
+                this.payload = payload;
+            }
+        }
+
+        function routeEvent(event){
+            if (event.type == undefined){
+                alert('no type field in the event');
+            }
+
+            switch(event.type){
+                case "new_message":
+                    console.log("new message")
+                    break;
+                default:
+                    alert("unsupported")
+            }
+        }
+    </script>
 
     <style type="text/css">
         body{
