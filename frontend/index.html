@@ -74,6 +74,21 @@
             }
             return false;
         }
+
+        window.onload = function(){
+            document.getElementById("chatroom-selection").onsubmit = changeChatRoom;
+            document.getElementById("chatroom-message").onsubmit = sendMessage;
+
+            if (window["WebSocket"]){
+                console.log("supports websockets");
+                conn = new WebSocket("ws://" + document.location.host + "/ws");
+                conn.onmessage = function (event){
+                    console.log(event);
+                }
+            } else{
+                alert("Browser does not support websockts")
+            }
+        }
     </script>
 
     <style type="text/css">
