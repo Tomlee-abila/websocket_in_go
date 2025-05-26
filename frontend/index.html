@@ -66,6 +66,14 @@
             }
             return false;
         }
+
+        function sendMessage(){
+            var newMessage = document.getElementById("message");
+            if (newMessage != null){
+                sendEvent("send_message", newMessage.value)
+            }
+            return false;
+        }
     </script>
 
     <style type="text/css">
