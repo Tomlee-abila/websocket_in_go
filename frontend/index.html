@@ -31,6 +31,8 @@
     </div>
 
     <script>
+        var selectedChat = "general";
+
         class Event {
             constructor(type, payload){
                 this.type = type;
@@ -50,6 +52,11 @@
                 default:
                     alert("unsupported")
             }
+        }
+
+        function sendEvent(eventName, payload){
+            const event = new Event(eventName, payload);
+            conn.send(JSON.stringify(event));
         }
     </script>
 
