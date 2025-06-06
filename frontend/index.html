@@ -56,6 +56,7 @@
 
         function sendEvent(eventName, payload){
             const event = new Event(eventName, payload);
+            console.log(JSON.stringify(event))
             conn.send(JSON.stringify(event));
         }
 
@@ -82,8 +83,11 @@
             if (window["WebSocket"]){
                 console.log("supports websockets");
                 conn = new WebSocket("ws://" + document.location.host + "/ws");
-                conn.onmessage = function (event){
-                    console.log(event);
+                conn.onmessage = function (evt){
+                    const eventData = JSON.parse(evt.data);
+                    const event = Object.assign(new Event, eventData);
+
+                    routeEvent(event);
                 }
             } else{
                 alert("Browser does not support websockts")
