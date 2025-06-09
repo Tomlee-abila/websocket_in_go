@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/gorilla/websocket"
@@ -34,6 +35,7 @@ func (c *Client) readMessages(){
 
 	for {
 		_, payload, err := c.connection.ReadMessage();
+		
 
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure){
@@ -43,6 +45,9 @@ func (c *Client) readMessages(){
 		}
 
 		var request Event
+		fmt.Println("Hello Tomlee")
+
+		fmt.Println("payload:",payload)
 
 		if err := json.Unmarshal(payload, &request); err != nil {
 			log.Printf("error marshalling event: %v", err)

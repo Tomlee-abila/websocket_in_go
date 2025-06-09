@@ -30,8 +30,19 @@ func NewManager() *Manager{
 		handlers: make(map[string]EventHandler),
 	}
 
-	m.setupEventHandlera()
+	m.setupEventHandlers()
 	return m
+}
+
+
+
+func (m *Manager) setupEventHandlers(){
+	m.handlers[EventSendMessage] = SendMessage
+}
+
+func SendMessage (event Event, c *Client) error{
+	fmt.Println(event)
+	return nil
 }
 
 func (m *Manager) routEvent(event Event, c *Client) error{
@@ -44,16 +55,6 @@ func (m *Manager) routEvent(event Event, c *Client) error{
 		return errors.New("there is no such event type")
 	}
 }
-
-func (m *Manager) setupEventHandlera(){
-	m.handlers[EventSendMessage] = SendMessage
-}
-
-func SendMessage (event Event, c *Client) error{
-	fmt.Println(event)
-	return nil
-}
-
 
 func (m *Manager) serveWs( w http.ResponseWriter, r *http.Request){
 	log.Println("new connection")

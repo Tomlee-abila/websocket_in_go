@@ -71,7 +71,11 @@
         function sendMessage(){
             var newMessage = document.getElementById("message");
             if (newMessage != null){
-                sendEvent("send_message", newMessage.value)
+                const payload = {
+                    message: newMessage.value,
+                    from: "anonymous" 
+                };
+                sendEvent("send_message", payload)
             }
             return false;
         }

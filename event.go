@@ -4,7 +4,7 @@ import "encoding/json"
 
 type Event struct {
 	Type    string          `json:"type"`
-	payload json.RawMessage `json:"payload"`
+	Payload json.RawMessage `json:"payload"`
 }
 
 type EventHandler func(event Event, c *Client) error
