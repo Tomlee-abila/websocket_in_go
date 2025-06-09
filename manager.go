@@ -46,6 +46,7 @@ func SendMessage (event Event, c *Client) error{
 }
 
 func (m *Manager) routEvent(event Event, c *Client) error{
+	// Checks if the event is part of the handlers
 	if handler, ok := m.handlers[event.Type]; ok {
 		if err := handler(event, c); err != nil{
 			return err
