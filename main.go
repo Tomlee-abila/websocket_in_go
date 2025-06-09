@@ -15,5 +15,5 @@ func setupAPI(){
 
 	http.Handle("/", http.FileServer(http.Dir("./frontend")));
 	http.HandleFunc("/ws", manager.serveWs)
-
 }
+
