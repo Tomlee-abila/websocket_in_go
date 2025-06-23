@@ -121,14 +121,16 @@
         function connectWebsocket(otp){
             if (window["WebSocket"]){
                 console.log("supports websockets");
-                conn = new WebSocket("ws://" + document.location.host + "/ws?otp="+ otp);
+                conn = new WebSocket("ws://" + document.location.host + "/ws?otp=",otp);
 
                 conn.onopen = function (evt){
-                    document.getElementById("connection-header").innerHTML= "Connect to websocket: true"
+                    document.getElementById("connection-header").innerHTML= "Connected to websocket: true"
                 }
 
                 conn.onclose = function(evt){
-                    const evenData
+                    document.getElementById("connection-header").innerHTML = "connected websocket: false"
+                    // reconnection
+                    z
                 }
 
                 conn.onmessage = function (evt){

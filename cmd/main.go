@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"websocket/utills"
 )
 
 func main(){
@@ -11,9 +12,9 @@ func main(){
 }
 
 func setupAPI(){
-	manager := NewManager();
+	manager := utills.NewManager();
 
 	http.Handle("/", http.FileServer(http.Dir("./frontend")));
-	http.HandleFunc("/ws", manager.serveWs)
+	http.HandleFunc("/ws", manager.ServeWs)
 }
 

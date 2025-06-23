@@ -1,4 +1,4 @@
-package main
+package utills
 
 import (
 	"errors"
@@ -58,7 +58,7 @@ func (m *Manager) routEvent(event Event, c *Client) error{
 	}
 }
 
-func (m *Manager) serveWs( w http.ResponseWriter, r *http.Request){
+func (m *Manager) ServeWs( w http.ResponseWriter, r *http.Request){
 	log.Println("new connection")
 
 	//upgrade regular http connection into websocket
